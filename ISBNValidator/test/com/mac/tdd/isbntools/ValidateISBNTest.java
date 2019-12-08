@@ -37,12 +37,12 @@ class ValidateISBNTest {
         boolean result = validator.checkISBN("0140449117");
         assertFalse(result);
     }
+
     @Test
     public void checkAnInvalid13DigitsISBN() {
         ValidateISBN validator = new ValidateISBN();
         boolean result = validator.checkISBN("9780984782804");
         assertFalse(result);
-        fail();
     }
 
     //junit 4 @Test(expected = StringIndexOutOfBoundsException.class)
