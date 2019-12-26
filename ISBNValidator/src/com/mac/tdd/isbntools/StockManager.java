@@ -1,6 +1,7 @@
 package com.mac.tdd.isbntools;
 
 public class StockManager {
+
     private ExternalISBNDataService webService;
     private ExternalISBNDataService databaseService;
 
