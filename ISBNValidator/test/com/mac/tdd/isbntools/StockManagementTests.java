@@ -9,7 +9,13 @@ public class StockManagementTests {
 
     @Test
     public void testCanGetACorrectLocationCode() {
-        ExternalISBNDataService testService = new ExternalISBNDataService() {
+        ExternalISBNDataService testDatabaseService = new ExternalISBNDataService() {
+            @Override
+            public Book lookup(String isbn) {
+                return null;
+            }
+        };
+        ExternalISBNDataService testWebService = new ExternalISBNDataService() {
             @Override
             public Book lookup(String isbn) {
                 return new Book(isbn, "Of Mice And Men", "J. Steinbeck");
@@ -17,7 +23,8 @@ public class StockManagementTests {
         };
 
         StockManager stockManager = new StockManager();
-        stockManager.setService(testService);
+        stockManager.setDatabaseService(testDatabaseService);
+        stockManager.setWebService(testWebService);
 
         String isbn = "0140177396";
         String locationCode = stockManager.getLocationCode(isbn);
