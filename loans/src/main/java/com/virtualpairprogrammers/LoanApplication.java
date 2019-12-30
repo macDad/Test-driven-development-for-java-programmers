@@ -1,80 +1,77 @@
 package com.virtualpairprogrammers;
 
-import java.math.BigDecimal;
+import org.springframework.web.client.RestTemplate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import org.springframework.web.client.RestTemplate;
+import java.math.BigDecimal;
 
 @Entity
-public class LoanApplication 
-{
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
-	private String name;
-	private int principal; // amount borrowed
-	private int termInMonths;
-	private BigDecimal repayment;
-	private Boolean approved;
-	
-	
-	public Boolean getApproved() {
-		return approved;
-	}
-
-	public void setApproved(Boolean approved) {
-		this.approved = approved;
-	}
-
-	public BigDecimal getInterestRate() {
-		RestTemplate restTemplate = new RestTemplate();
-		return restTemplate.getForObject("http://loans.virtualpairprogrammers.com/getInterestRate", BigDecimal.class);
-	}
+public class LoanApplication {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+    private String name;
+    private int principal; // amount borrowed
+    private int termInMonths;
+    private BigDecimal repayment;
+    private Boolean approved;
 
 
+    public Boolean getApproved() {
+        return approved;
+    }
 
-	public BigDecimal getRepayment() {
-		return repayment;
-	}
+    public void setApproved(Boolean approved) {
+        this.approved = approved;
+    }
 
-	public void setRepayment(BigDecimal repayment) {
-		this.repayment = repayment;
-	}
+    public BigDecimal getInterestRate() {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject("http://loans.virtualpairprogrammers.com/getInterestRate", BigDecimal.class);
+    }
 
-	public String getName() {
-		return name;
-	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public BigDecimal getRepayment() {
+        return repayment;
+    }
 
-	public int getPrincipal() {
-		return principal;
-	}
+    public void setRepayment(BigDecimal repayment) {
+        this.repayment = repayment;
+    }
 
-	public void setPrincipal(int principal) {
-		this.principal = principal;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public int getTermInMonths() {
-		return termInMonths;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setTermInMonths(int termInMonths) {
-		this.termInMonths = termInMonths;
-	}
+    public int getPrincipal() {
+        return principal;
+    }
 
-	public int getId() {
-		return id;
-	}
+    public void setPrincipal(int principal) {
+        this.principal = principal;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
-	
+    public int getTermInMonths() {
+        return termInMonths;
+    }
+
+    public void setTermInMonths(int termInMonths) {
+        this.termInMonths = termInMonths;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
 }
